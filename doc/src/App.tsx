@@ -1,35 +1,31 @@
-import React from 'react';
-import testImage from './byczek.png';
+import React, { ReactNode } from 'react';
 import './index.css';
 import * as ipz from './Components';
 
-function App() {
+export function Index() {
+  return (
+    <App>
+    <ipz.Title >
+        ipz
+        </ipz.Title>
+
+        <ipz.Header> Reference </ipz.Header>
+
+        <ipz.BulletParagraph>
+          <ipz.Link path={"/postęp"} text={"Postęp"}/>
+          <ipz.Link path={"/dokumentacja"} text={"Dokumentacja"}/>
+          <ipz.Link path={"https://github.com/lavycasm/ipz"} text={"GitHub"}/>
+        </ipz.BulletParagraph>
+      </App>
+  );
+}
+
+export function App(app: { children: ReactNode }) {
   return (
     <div className="App">
       <ipz.Overlay/>
       <div className="Body">
-
-        <ipz.Title >
-            ipz
-            <ipz.PageDate date={new Date(2025, 11, 5, 19, 49)}/>
-        </ipz.Title>
-        <ipz.Header>
-            Reference
-        </ipz.Header>
-        <ipz.Paragraph>
-            test
-        </ipz.Paragraph>
-        <ipz.Paragraph>
-          <span className="Bullet">&#9679;</span>
-          <ipz.Link path={"/history"} text={"Postęp"}/>
-        </ipz.Paragraph>
-        <ipz.Header>jakis header bla bla</ipz.Header>
-        <ipz.Paragraph>tera pokaze jak sformatować komputer</ipz.Paragraph>
-        <ipz.Image path={testImage} caption={"none"} />
-        <ipz.Code lang={'bash'}>
-          $ echo YOLO!! \
-          $ sudo rm -rf ./
-        </ipz.Code>
+        {app.children}
       </div>
     </div>
   );

@@ -1,14 +1,40 @@
+import * as React from 'react';
 import './ipz.css';
 
-import { CopyBlock, rainbow } from 'react-code-blocks';
+import {  CopyBlock, rainbow } from 'react-code-blocks';
 import * as ReactRouter from 'react-router-dom' ;
 
+function Bullet() {
+  return <span className="Bullet">&#9679;</span>;
+}
+
+export function BulletParagraph(props: { children: React.ReactNode }) {
+
+  var childrenLength = React.Children.count(props.children);
+  console.log(childrenLength);
+
+  var paragraphs = React.Children.map(props.children, (child, _) => {
+    return (
+    <Paragraph>
+        <Bullet />
+        {child}
+    </Paragraph>
+    );
+  });
+
+  return (<>{paragraphs}</>);
+}
+
+
 export function Code(props: any) {
+
+  // const raw = String(props.children);
+  // const text = code.replace(/\\\s*/g, '\n'); // replace all backslashes (and following whitespace/newline) with a newline
   const block = {
-    text: props.children.replace(" \\ ", '\n').replace("\\", '\n'),
+    text: props.children,
     language: props.lang,
     showLineNumbers: true,
-    startingLineNumber: 1,
+    startingLineNumber: 0,
     theme: rainbow
   }
   return (
@@ -45,7 +71,7 @@ export function Overlay() {
   );
 }
 
-export function Image({path, caption}: {path: string, caption: string}) {
+export function Image({path, caption, style}: {path: string, caption?: string, style?: React.CSSProperties}) {
 
   function enlargeImage()  {
     var image = document.getElementById(path)?.classList;
@@ -63,9 +89,9 @@ export function Image({path, caption}: {path: string, caption: string}) {
   }
 
   return (
-    <div className='Image'>
-      <img id={path} alt={path} src={path} onClick={enlargeImage} />
-      <p>{caption}</p>
+    <div className='Image' >
+      <img style={style} id={path} alt={path} src={path} onClick={enlargeImage} />
+      <span>{caption}</span>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 html, body {
   font-family: "Segoe UI";
   font-weight: lighter;
-  -webkit-text-stroke: 1px #acacacaa;
 }
 
 .Overlay {
@@ -37,7 +36,7 @@ html, body {
   flex-direction: column;
   width: 50%;
   height: 100%;
-  background-color: #2c2c2c;
+  background-color: #222424;
 }
 
 .Header {
@@ -50,11 +49,6 @@ html, body {
   width: 90%;
   text-indent: 5%;
   margin-left: 5%;
-}
-
-.Header > p {
-  margin: 0 0 0.5em 0;
-  padding-left: 5%;
 }
 
 .Title {
@@ -76,11 +70,11 @@ html, body {
 
 .Paragraph {
   display: inline-block;
-  margin: 0 5% 0 5%;
-  width: 90%;
-  padding: 0 0 0% 0;
+  margin: 0% 5% 0% 5%;
+  width: 80%;
+  padding: 0 0% 0% 5%;
   font-size: calc(2vmin);
-  text-indent: 7.5%
+  text-indent: 2.5%
 }
 
 .Date {
@@ -92,14 +86,14 @@ html, body {
 }
 
 .Code {
-  position: unset;
   z-index: 0;
-  margin: 0 5% 0 5%;
-  font-size: 0.75em;
+  position: unset;
+  margin: 2.5% 5% 2.5% 5%;
+  font-size: small;
 }
 
 .Link {
-  color: darkcyan;
+  color: aquamarine;
   text-decoration: none;
   margin: auto;
 }
@@ -130,7 +124,7 @@ html, body {
 
 .ImageEnlarged {
   position: relative;
-  transform: scale(2.5);
+  transform: scale(2);
   display: inline-block;
   transition: transform 0.25s ease;
   cursor: zoom-out;
@@ -138,13 +132,20 @@ html, body {
   margin-bottom: 100%;
 }
 
-.Image > * {
+.Image {
   margin: auto;
-  max-width: 75%;
-  display: block;
   text-align: center;
   margin-bottom: 2.5%;
   font-size: smaller;
+} 
+
+.Image span {
+  text-align: center;
+  margin-bottom: -2.5%;
+  transform: translateY(-100%);
+  display: block;
+  font-size: xx-small;
+  color: #ffffffaa;
 }
 
 .Bullet {

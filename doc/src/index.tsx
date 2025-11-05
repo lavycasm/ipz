@@ -2,10 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './ipz.css';
-import App from './App';
-import History from './History';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter, Route, Routes } from 'react-router-dom';
+
+
+import {Index} from './App';
+import {Postęp} from './Postęp';
+import {Dokumentacja} from './Dokumentacja';
+import {DocStrona, DocCTF, DocHardware, DocPorty, DocSerwery} from './Dokumentacja';
+
+// hack zeby dzialalo tez na githubie
+function makeRoute(path: string, element: React.ReactNode) {
+  return (
+    <>
+      <Route path={path} element={element} />
+      <Route path={"/ipz" + path} element={element} />
+    </>
+  );
+}
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,10 +29,14 @@ root.render(
   <React.StrictMode>
     <HashRouter>
       <Routes>
-        <Route path="/history" element={<History />} />
-        <Route path="/" element={<App />} />
-        <Route path="/ipz/history" element={<History />} />
-        <Route path="/ipz" element={<App />} />
+        {makeRoute("/", <Index />)}
+        {makeRoute("/postęp", <Postęp />)}
+        {makeRoute("/dokumentacja", <Dokumentacja />)}
+        {makeRoute("/dokumentacja/strona", <DocStrona />)}
+        {makeRoute("/dokumentacja/ctf", <DocCTF />)}
+        {makeRoute("/dokumentacja/hardware", <DocHardware />)}
+        {makeRoute("/dokumentacja/porty", <DocPorty />)}
+        {makeRoute("/dokumentacja/serwery", <DocSerwery />)}
       </Routes>
     </HashRouter>
   </React.StrictMode>
