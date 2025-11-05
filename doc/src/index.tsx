@@ -16,6 +16,8 @@ root.render(
       <Routes>
         <Route path="/history" element={<History />} />
         <Route path="/" element={<App />} />
+        <Route path="/ipz/history" element={<History />} />
+        <Route path="/ipz" element={<App />} />
       </Routes>
     </HashRouter>
   </React.StrictMode>
